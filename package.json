@@ -1,0 +1,36 @@
+{
+  "name": "VUE_SSR",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "vue": "^2.6.10",
+    "vue-server-renderer": "^2.6.10",
+    "webpack-cli": "^3.3.10",
+    "webpack": "^4.41.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-vue": "^2.0.2",
+    "css-loader": "^3.2.0",
+    "file-loader": "^4.2.0",
+    "vue-loader": "^15.7.2",
+    "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "babel": {
+    "presets": [
+      "env",
+      "vue"
+    ]
+  }
+}
