@@ -14951,6 +14951,7 @@ _vue2.default.use(_vueRouter2.default);
 
 function createRouter() {
   return new _vueRouter2.default({
+    mode: 'history',
     routes: [{
       path: '/',
       name: 'hello',
