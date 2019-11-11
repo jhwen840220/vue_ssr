@@ -1,13 +1,14 @@
 <!doctype html>
 <html>
 <head>
-  <!-- use triple mustache for non-HTML-escaped interpolation -->
+  <!-- 三括號為不轉義HTML插值 -->
   {{{ meta }}}
-  <!-- use double mustache for HTML-escaped interpolation -->
+  <!-- 雙括號為轉義HTML插值 -->
   <title>{{ title }}</title>
 </head>
 <body>
   <!--vue-ssr-outlet-->
+  <!-- 上面是將應用程序 HTML 標記注入的地方 -->
   <script src="/dist/main.js"></script>
 </body>
 </html>

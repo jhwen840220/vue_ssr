@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 //obtain bundle
 const bundle =  require('./dist/server.bundle.js');
-//get renderer from vue server renderer
+// 創建一個 renderer
 const renderer = require('vue-server-renderer').createRenderer({
   //set template
   template: fs.readFileSync('./dist/index.html', 'UTF-8')
@@ -26,6 +26,7 @@ server.get('*', (req, res) => {
       `
     };
 
+    // 將 Vue 實例渲染為 HTML
     renderer.renderToString(app, context, function (err, html) {   
       if (err) {
         if (err.code === 404) {
