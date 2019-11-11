@@ -1,12 +1,15 @@
 import Vue from 'vue'
-import hello from './hello.vue'
+import app from './app.vue'
+import router from './router/router.js'
+
+Vue.config.productionTip = false
 
 new Vue({
     el: '#app',
-    mounted: function () {
-        console.log('Hello World');
-
+    router,
+    mounted() {
+       console.log('Hello World');
     },
-    components: { hello },
-    template: '<hello/>'
+    components: { app },
+    template: '<app/>'
 })

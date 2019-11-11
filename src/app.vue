@@ -1,0 +1,27 @@
+<template>
+  <div class="app">
+    <div>APP</div>
+    <router-link to="/">首頁</router-link> <br>
+    <router-link to="/page2">page2</router-link>
+    <router-view></router-view>
+  </div>
+  
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      who: 'world'
+    }
+  }
+};
+</script>
+
+<style scoped>
+.app {
+  padding: .5em;
+  font-size: 2em;
+  background-color: #fcf;
+}
+</style>
