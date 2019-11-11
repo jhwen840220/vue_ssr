@@ -1,15 +1,18 @@
 import Vue from 'vue'
-import app from './app.vue'
-import router from './router/router.js'
+import App from './App.vue'
+import { createRouter } from './router/router.js';
 
-Vue.config.productionTip = false
+// 輸出一個function
 
-new Vue({
-    el: '#app',
+export function createApp() {
+  // 建立 router
+  const router = createRouter();
+
+  const app = new Vue({
     router,
-    mounted() {
-       console.log('Hello World');
-    },
-    components: { app },
-    template: '<app/>'
-})
+    // the root instance simply renders the App component.
+    render: h => h(App)
+  });
+
+  return { app, router };
+}
