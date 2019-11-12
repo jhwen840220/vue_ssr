@@ -9,6 +9,7 @@ export function createApp() {
   const router = createRouter();
 
   const app = new Vue({
+    // 注入 router 到根 Vue 實例
     router,
     // the root instance simply renders the App component.
     render: h => h(App)

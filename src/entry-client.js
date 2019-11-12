@@ -1,7 +1,9 @@
 //client-entry.js
 import { createApp } from './index.js';
 
-const { app } = createApp()
+const { app, router } = createApp()
 
-// this assumes App.vue template root element has `id="app"`
-app.$mount('#app')
+// 這裡假定 App.vue 模板中根元素具有 `id="app"`
+router.onReady(() => {
+    app.$mount('#app')
+})

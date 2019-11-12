@@ -1,23 +1,21 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import hello from '../components/hello.vue'
-import page2 from '../components/page2.vue'
 
 Vue.use(Router)
 
-export function createRouter(){
+export function createRouter() {
   return new Router({
     mode: 'history',
     routes: [
       {
         path: '/',
         name: 'hello',
-        component: hello
+        component: () => import('../components/hello.vue')
       },
       {
         path: '/page2',
         name: 'page2',
-        component: page2
+        component: () => import('../components/page2.vue')
       },
     ]
   });
