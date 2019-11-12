@@ -6,16 +6,17 @@ Vue.use(Vuex)
 export function createStore () {
   return new Vuex.Store({
     state: {
-      items: {}
+      time: ''
     },
     actions: {
-      fetchItem ({ commit }, id) {
-        commit('setItem', { id, item: new Date() })
+      fetchTime ({ commit }) {
+        return commit('setTime', new Date() )
       }
     },
     mutations: {
-      setItem (state, { id, item }) {
-        Vue.set(state.items, id, item)
+      setTime (state, time) {
+          state.time = time
+
       }
     }
   })

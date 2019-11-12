@@ -18,26 +18,28 @@ export default context => {
       if (!matchedComponents.length) {
         return reject({ code: 404 });
       }
+      else { 
+        // 對所有匹配的路由組件調用 `asyncData()`
+        Promise.all(matchedComponents.map(Component => {
+          if (Component.asyncData) {
+            Component.asyncData({
+              store,
+              route: router.currentRoute
+            })
+            return 
+          }
+        })).then(() => {
+          // 在所有預取鉤子(preFetch hook) resolve 後，
+          // 我們的 store 現在已經填充入渲染應用程序所需的狀態。
+          // 當我們將狀態附加到上下文，
+          // 並且 `template` 選項用於 renderer 時，
+          // 狀態將自動序列化為 `window.__INITIAL_STATE__`，並注入 HTML。
+          context.state = store.state
 
-      // 對所有匹配的路由組件調用 `asyncData()`
-      Promise.all(matchedComponents.map(Component => {
-        if (Component.asyncData) {
-          return Component.asyncData({
-            store,
-            route: router.currentRoute
-          })
-        }
-      })).then(() => {
-        // 在所有預取鉤子(preFetch hook) resolve 後，
-        // 我們的 store 現在已經填充入渲染應用程序所需的狀態。
-        // 當我們將狀態附加到上下文，
-        // 並且 `template` 選項用於 renderer 時，
-        // 狀態將自動序列化為 `window.__INITIAL_STATE__`，並注入 HTML。
-        context.state = store.state
-
-      // Promise 應該 resolve 應用程序實例，以便可以渲染
-      resolve(app);
-      }).catch(reject);
-    }, reject);
-  });
+          // Promise 應該 resolve 應用程序實例，以便可以渲染
+          resolve(app)
+        }).catch(reject)
+      }
+    }, reject)
+  })
 }

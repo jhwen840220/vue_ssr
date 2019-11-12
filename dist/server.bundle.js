@@ -169,7 +169,6 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
-//
 
 exports.default = {
   data: function data() {
@@ -180,18 +179,13 @@ exports.default = {
         route = _ref.route;
 
     // 觸發 action 後，會返回 Promise
-    return store.dispatch('fetchItem', 'server');
+    return store.dispatch('fetchTime');
   },
-  mounted: function mounted() {
-    this.$store.dispatch('fetchItem', 'client');
-  },
+  mounted: function mounted() {},
 
   computed: {
-    serverItem: function serverItem() {
-      return this.$store.state.items.server;
-    },
-    clientItem: function clientItem() {
-      return this.$store.state.items.client;
+    time: function time() {
+      return this.$store.state.time;
     }
   }
 };
@@ -350,9 +344,9 @@ var staticRenderFns = []
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/components/page2.vue?vue&type=template&id=6181151b&":
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/components/page2.vue?vue&type=template&id=37bcb710&":
 /*!***********************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./src/components/page2.vue?vue&type=template&id=6181151b& ***!
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./src/components/page2.vue?vue&type=template&id=37bcb710& ***!
   \***********************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -361,7 +355,7 @@ var staticRenderFns = []
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"page2"}},[_vm._ssrNode("<p>"+_vm._ssrEscape("server: "+_vm._s(_vm.serverItem))+"</p> <p>"+_vm._ssrEscape("client: "+_vm._s(_vm.clientItem))+"</p>")])}
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"page2"}},[_vm._ssrNode("<p>"+_vm._ssrEscape("server: "+_vm._s(_vm.time))+"</p>")])}
 var staticRenderFns = []
 
 
@@ -766,6 +760,7 @@ function createApp() {
 
   // 同步路由狀態(route state)到 store
   (0, _vuexRouterSync.sync)(store, router);
+
   var app = new _vue2.default({
     // 注入 router, store 到根 Vue 實例
     router: router,
@@ -862,7 +857,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _page2_vue_vue_type_template_id_6181151b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./page2.vue?vue&type=template&id=6181151b& */ "./src/components/page2.vue?vue&type=template&id=6181151b&");
+/* harmony import */ var _page2_vue_vue_type_template_id_37bcb710___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./page2.vue?vue&type=template&id=37bcb710& */ "./src/components/page2.vue?vue&type=template&id=37bcb710&");
 /* harmony import */ var _page2_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./page2.vue?vue&type=script&lang=js& */ "./src/components/page2.vue?vue&type=script&lang=js&");
 /* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _page2_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _page2_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
@@ -878,8 +873,8 @@ function injectStyles (context) {
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
   _page2_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _page2_vue_vue_type_template_id_6181151b___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _page2_vue_vue_type_template_id_6181151b___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _page2_vue_vue_type_template_id_37bcb710___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _page2_vue_vue_type_template_id_37bcb710___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   injectStyles,
   null,
@@ -907,19 +902,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/components/page2.vue?vue&type=template&id=6181151b&":
+/***/ "./src/components/page2.vue?vue&type=template&id=37bcb710&":
 /*!*****************************************************************!*\
-  !*** ./src/components/page2.vue?vue&type=template&id=6181151b& ***!
+  !*** ./src/components/page2.vue?vue&type=template&id=37bcb710& ***!
   \*****************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_page2_vue_vue_type_template_id_6181151b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../node_modules/vue-loader/lib??vue-loader-options!./page2.vue?vue&type=template&id=6181151b& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/components/page2.vue?vue&type=template&id=6181151b&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_page2_vue_vue_type_template_id_6181151b___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_page2_vue_vue_type_template_id_37bcb710___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../node_modules/vue-loader/lib??vue-loader-options!./page2.vue?vue&type=template&id=37bcb710& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/components/page2.vue?vue&type=template&id=37bcb710&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_page2_vue_vue_type_template_id_37bcb710___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_page2_vue_vue_type_template_id_6181151b___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_page2_vue_vue_type_template_id_37bcb710___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -962,27 +957,28 @@ exports.default = function (context) {
       // 匹配不到的路由，執行 reject 函數，返回 404
       if (!matchedComponents.length) {
         return reject({ code: 404 });
+      } else {
+        // 對所有匹配的路由組件調用 `asyncData()`
+        Promise.all(matchedComponents.map(function (Component) {
+          if (Component.asyncData) {
+            Component.asyncData({
+              store: store,
+              route: router.currentRoute
+            });
+            return;
+          }
+        })).then(function () {
+          // 在所有預取鉤子(preFetch hook) resolve 後，
+          // 我們的 store 現在已經填充入渲染應用程序所需的狀態。
+          // 當我們將狀態附加到上下文，
+          // 並且 `template` 選項用於 renderer 時，
+          // 狀態將自動序列化為 `window.__INITIAL_STATE__`，並注入 HTML。
+          context.state = store.state;
+
+          // Promise 應該 resolve 應用程序實例，以便可以渲染
+          resolve(app);
+        }).catch(reject);
       }
-
-      // 對所有匹配的路由組件調用 `asyncData()`
-      Promise.all(matchedComponents.map(function (Component) {
-        if (Component.asyncData) {
-          return Component.asyncData({
-            store: store,
-            route: router.currentRoute
-          });
-        }
-      })).then(function () {
-        // 在所有預取鉤子(preFetch hook) resolve 後，
-        // 我們的 store 現在已經填充入渲染應用程序所需的狀態。
-        // 當我們將狀態附加到上下文，
-        // 並且 `template` 選項用於 renderer 時，
-        // 狀態將自動序列化為 `window.__INITIAL_STATE__`，並注入 HTML。
-        context.state = store.state;
-
-        // Promise 應該 resolve 應用程序實例，以便可以渲染
-        resolve(app);
-      }).catch(reject);
     }, reject);
   });
 }; //entry-server.js
@@ -1071,21 +1067,18 @@ _vue2.default.use(_vuex2.default);
 function createStore() {
   return new _vuex2.default.Store({
     state: {
-      items: {}
+      time: ''
     },
     actions: {
-      fetchItem: function fetchItem(_ref, id) {
+      fetchTime: function fetchTime(_ref) {
         var commit = _ref.commit;
 
-        commit('setItem', { id: id, item: new Date() });
+        return commit('setTime', new Date());
       }
     },
     mutations: {
-      setItem: function setItem(state, _ref2) {
-        var id = _ref2.id,
-            item = _ref2.item;
-
-        _vue2.default.set(state.items, id, item);
+      setTime: function setTime(state, time) {
+        state.time = time;
       }
     }
   });

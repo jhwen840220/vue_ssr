@@ -168,7 +168,6 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
-//
 
 exports.default = {
   data: function data() {
@@ -179,18 +178,13 @@ exports.default = {
         route = _ref.route;
 
     // 觸發 action 後，會返回 Promise
-    return store.dispatch('fetchItem', 'server');
+    return store.dispatch('fetchTime');
   },
-  mounted: function mounted() {
-    this.$store.dispatch('fetchItem', 'client');
-  },
+  mounted: function mounted() {},
 
   computed: {
-    serverItem: function serverItem() {
-      return this.$store.state.items.server;
-    },
-    clientItem: function clientItem() {
-      return this.$store.state.items.client;
+    time: function time() {
+      return this.$store.state.time;
     }
   }
 };
@@ -812,9 +806,9 @@ var staticRenderFns = []
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/components/page2.vue?vue&type=template&id=6181151b&":
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/components/page2.vue?vue&type=template&id=37bcb710&":
 /*!***********************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./src/components/page2.vue?vue&type=template&id=6181151b& ***!
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./src/components/page2.vue?vue&type=template&id=37bcb710& ***!
   \***********************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -823,7 +817,7 @@ var staticRenderFns = []
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"page2"}},[_c('p',[_vm._v("server: "+_vm._s(_vm.serverItem))]),_vm._v(" "),_c('p',[_vm._v("client: "+_vm._s(_vm.clientItem))])])}
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"page2"}},[_c('p',[_vm._v("server: "+_vm._s(_vm.time))])])}
 var staticRenderFns = []
 
 
@@ -15874,6 +15868,7 @@ function createApp() {
 
   // 同步路由狀態(route state)到 store
   (0, _vuexRouterSync.sync)(store, router);
+
   var app = new _vue2.default({
     // 注入 router, store 到根 Vue 實例
     router: router,
@@ -15967,7 +15962,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _page2_vue_vue_type_template_id_6181151b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./page2.vue?vue&type=template&id=6181151b& */ "./src/components/page2.vue?vue&type=template&id=6181151b&");
+/* harmony import */ var _page2_vue_vue_type_template_id_37bcb710___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./page2.vue?vue&type=template&id=37bcb710& */ "./src/components/page2.vue?vue&type=template&id=37bcb710&");
 /* harmony import */ var _page2_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./page2.vue?vue&type=script&lang=js& */ "./src/components/page2.vue?vue&type=script&lang=js&");
 /* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _page2_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _page2_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
@@ -15980,8 +15975,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
   _page2_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _page2_vue_vue_type_template_id_6181151b___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _page2_vue_vue_type_template_id_6181151b___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _page2_vue_vue_type_template_id_37bcb710___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _page2_vue_vue_type_template_id_37bcb710___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -16009,19 +16004,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/components/page2.vue?vue&type=template&id=6181151b&":
+/***/ "./src/components/page2.vue?vue&type=template&id=37bcb710&":
 /*!*****************************************************************!*\
-  !*** ./src/components/page2.vue?vue&type=template&id=6181151b& ***!
+  !*** ./src/components/page2.vue?vue&type=template&id=37bcb710& ***!
   \*****************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_page2_vue_vue_type_template_id_6181151b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../node_modules/vue-loader/lib??vue-loader-options!./page2.vue?vue&type=template&id=6181151b& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/components/page2.vue?vue&type=template&id=6181151b&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_page2_vue_vue_type_template_id_6181151b___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_page2_vue_vue_type_template_id_37bcb710___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../node_modules/vue-loader/lib??vue-loader-options!./page2.vue?vue&type=template&id=37bcb710& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/components/page2.vue?vue&type=template&id=37bcb710&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_page2_vue_vue_type_template_id_37bcb710___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_page2_vue_vue_type_template_id_6181151b___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_page2_vue_vue_type_template_id_37bcb710___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -16045,13 +16040,45 @@ var _createApp = (0, _app.createApp)(),
     store = _createApp.store; //client-entry.js
 
 
+console.log(store);
 if (window.__INITIAL_STATE__) {
-    store.replaceState(window.__INITIAL_STATE__);
+  store.replaceState(window.__INITIAL_STATE__);
 }
 
 // 這裡假定 App.vue 模板中根元素具有 `id="app"`
 router.onReady(function () {
-    app.$mount('#app');
+  // // 添加路由鉤子函數，用於處理 asyncData.
+  // // 在初始路由 resolve 後執行，
+  // // 以便我們不會二次預取(double-fetch)已有的數據。
+  // // 使用 `router.beforeResolve()`，以便確保所有異步组件都 resolve。
+
+  // router.beforeResolve((to, from, next) => {
+  //   const matched = router.getMatchedComponents(to)
+  //   const prevMatched = router.getMatchedComponents(from)
+
+  //   // 我們只關心非預渲染的組件
+  //   // 所以我們比對他們，找出兩個匹配列表的差異组件
+  //   let diffed = false
+  //   const activated = matched.filter((c, i) => {
+  //     return diffed || (diffed = (prevMatched[i] !== c))
+  //   })
+
+  //   if (!activated.length) {
+  //     return next()
+  //   }
+
+  //   // 這裏如果有加載指示器 (loading indicator)，就觸發
+
+  //   Promise.all(activated.map(c => {
+  //     if (c.asyncData) {
+  //       return c.asyncData({ store, route: to })
+  //     }
+  //   })).then(() => {
+  //     // 停止加載指示器(loading indicator)
+  //     next()
+  //   }).catch(next)
+  // })
+  app.$mount('#app');
 });
 
 /***/ }),
@@ -16138,21 +16165,18 @@ _vue2.default.use(_vuex2.default);
 function createStore() {
   return new _vuex2.default.Store({
     state: {
-      items: {}
+      time: ''
     },
     actions: {
-      fetchItem: function fetchItem(_ref, id) {
+      fetchTime: function fetchTime(_ref) {
         var commit = _ref.commit;
 
-        commit('setItem', { id: id, item: new Date() });
+        return commit('setTime', new Date());
       }
     },
     mutations: {
-      setItem: function setItem(state, _ref2) {
-        var id = _ref2.id,
-            item = _ref2.item;
-
-        _vue2.default.set(state.items, id, item);
+      setTime: function setTime(state, time) {
+        state.time = time;
       }
     }
   });

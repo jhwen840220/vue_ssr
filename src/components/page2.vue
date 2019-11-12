@@ -1,7 +1,6 @@
 <template>
   <div id="page2">
-    <p>server: {{serverItem}}</p>
-    <p>client: {{clientItem}}</p>
+    <p>server: {{time}}</p>
   </div>
 </template>
 <script>
@@ -12,14 +11,14 @@ export default {
   },
   asyncData({ store, route }) {
     // 觸發 action 後，會返回 Promise
-    return store.dispatch('fetchItem', 'server')
+    return store.dispatch('fetchTime')
   },
   mounted() {
-    this.$store.dispatch('fetchItem', 'client')
   },
   computed: {
-    serverItem() { return this.$store.state.items.server },
-    clientItem() { return this.$store.state.items.client }
+    time() { 
+      return this.$store.state.time 
+      },
   }
 }
 

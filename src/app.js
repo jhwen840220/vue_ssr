@@ -13,6 +13,7 @@ export function createApp() {
 
   // 同步路由狀態(route state)到 store
   sync(store, router)
+
   const app = new Vue({
     // 注入 router, store 到根 Vue 實例
     router,
