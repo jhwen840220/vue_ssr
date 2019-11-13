@@ -3,12 +3,15 @@ const path = require('path');
 const webpack = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const VueSSRClientPlugin = require('vue-server-renderer/client-plugin')
 
 module.exports = {
   entry: './src/entry-client.js',
   output: {
     filename: 'main.js',
-    path: path.resolve(__dirname, 'dist')
+    chunkFilename: '[name].[chunkhash].js',
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/dist/',
   },
   mode: 'development',
   module: {
@@ -16,12 +19,13 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'vue-loader'
-			},
+      },
       // this will apply to both plain `.js` files
       // AND `<script>` blocks in `.vue` files
       {
         test: /\.js$/,
-        loader: 'babel-loader'
+        loader: 'babel-loader',
+        exclude: /node_modules/
       },
       // this will apply to both plain `.css` files
       // AND `<style>` blocks in `.vue` files
@@ -36,20 +40,20 @@ module.exports = {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {
-					name: '[name].[ext]?[hash]'
-				}
+          name: '[name].[ext]?[hash]'
+        }
       },
     ]
   },
   plugins: [
-    // make sure to include the plugin for the magic
     new VueLoaderPlugin()
   ],
+
   resolve: {
     alias: {
       'vue': 'vue/dist/vue.js'
-		},
-		extensions: ['*', '.js', '.vue', '.json']
+    },
+    extensions: ['*', '.js', '.vue', '.json']
   },
   devServer: {
     historyApiFallback: true,
@@ -84,6 +88,7 @@ if (process.env.NODE_ENV === 'production') {
     */
     new webpack.LoaderOptionsPlugin({
       minimize: true
-    })
+    }),
+    new VueSSRClientPlugin()
   ])
 }

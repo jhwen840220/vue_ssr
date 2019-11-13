@@ -2,6 +2,7 @@ var path = require('path')
 var webpack = require('webpack')
 var merge = require('webpack-merge')
 var baseWebpackConfig = require('./webpack.config.js')
+const VueSSRServerPlugin = require('vue-server-renderer/server-plugin')
 var webpackConfig = merge(baseWebpackConfig, {
   target: 'node',
   entry: {
@@ -18,6 +19,7 @@ var webpackConfig = merge(baseWebpackConfig, {
     new webpack.DefinePlugin({
       'process.env': 'production'
     }),
+    new VueSSRServerPlugin()
     /*
     new webpack.optimize.UglifyJsPlugin({
       compress: {
