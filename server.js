@@ -1,6 +1,7 @@
 //server.js
 const express = require('express');
-const server = express();
+const app = express();
+const favicon = require('serve-favicon');
 const fs = require('fs');
 const path = require('path');
 //obtain bundle
@@ -19,10 +20,20 @@ const renderer = createBundleRenderer(bundle, {
 //   template: fs.readFileSync('./dist/index.html', 'UTF-8')
 // });
 
-server.use('/dist', express.static(path.join(__dirname, './dist')));
+app.use('/dist', express.static(path.join(__dirname, './dist')));
+// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
+ 
+
+app.get('/favicon.ico', (req, res) => {
+  res.end()
+})
+
+app.get('/news', (req, res) => {
+	res.send("Hello NEWS");
+});
 
 //start server
-server.get('*', (req, res) => { 
+app.get('*', (req, res) => { 
     
   const context = {
     url: req.url,
@@ -32,14 +43,11 @@ server.get('*', (req, res) => {
     `
   }
 
-  if(req.url === "/favicon.ico"){
-      res.end();
-  }
+  res.writeHead(200, {
+    "Content-Type":"text/html;charset=UTF-8" // 避免亂碼
+  })
 
   renderer.renderToString(context, function (err, html) {
-    res.writeHead(200, {
-    "Content-Type":"text/html;charset=UTF-8" // 避免亂碼
-    })
     res.end(html)
   })
   // bundle.default({ url: req.url }).then((app) => {    
@@ -71,16 +79,12 @@ server.get('*', (req, res) => {
   //   console.log(err);
   //   console.log("stop");
   // });  
-});  
-
-server.get('/news', function(req, res){
-	res.send("Hello NEWS");
-});
+}); 
 
 // 啟動伺服器在 http://localhost:8888/
 
 let port = process.env.PORT || 8888;
 
-server.listen(port, function(){
+app.listen(port, function(){
   console.log("Start")
 });

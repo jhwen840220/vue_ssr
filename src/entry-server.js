@@ -35,7 +35,6 @@ export default context => {
           // 並且 `template` 選項用於 renderer 時，
           // 狀態將自動序列化為 `window.__INITIAL_STATE__`，並注入 HTML。
           context.state = store.state
-
           // Promise 應該 resolve 應用程序實例，以便可以渲染
           resolve(app)
         }).catch(reject)
