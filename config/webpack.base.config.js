@@ -1,5 +1,7 @@
-const path = require('path');
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const webpack = require('webpack');
+const path = require('path')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 // CSS 提取應該只用於 production 環境
@@ -7,6 +9,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const isProduction = process.env.NODE_ENV === 'production'
 module.exports = {
+  mode: isProduction ? 'production' : 'development',
   output: {
       path: path.resolve(__dirname, '../dist'),
       publicPath: '/dist/',
@@ -51,11 +54,19 @@ module.exports = {
   },
   plugins: [
     new VueLoaderPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+    }),
   ],
 }
 
 if(isProduction) {
   module.exports.plugins = (module.exports.plugins || []).concat([
-    new ExtractTextPlugin({ filename: 'common.[chunkhash].css' })
+    new ExtractTextPlugin({ filename: 'common.[chunkhash].css' }),
   ])
+  module.exports.optimization = {
+    minimizer: [new UglifyJsPlugin()],
+  }
+
+    
 }

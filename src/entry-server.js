@@ -18,6 +18,8 @@ export default context => {
       if (!matchedComponents.length) {
         return reject({ code: 404 });
       }
+
+      // 數據預取與狀態
       else { 
         // 對所有匹配的路由組件調用 `asyncData()`
         Promise.all(matchedComponents.map(Component => {

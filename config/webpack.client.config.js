@@ -1,14 +1,15 @@
 // webpack.config.js
 const webpack = require('webpack');
 const merge = require('webpack-merge')
+const path = require('path')
 const base = require('./webpack.base.config')
 const TerserPlugin = require('terser-webpack-plugin');
 const VueSSRClientPlugin = require('vue-server-renderer/client-plugin')
 
 const isProduction = process.env.NODE_ENV === 'production'
-module.exports = merge(base, {
+
+let config = merge(base, {
   entry: './src/entry-client.js',
-  // mode: 'production',
 
   
   // 重要信息：這將 webpack 運行時分離到一個引導 chunk 中，
@@ -16,7 +17,7 @@ module.exports = merge(base, {
   // 這也為你的 應用程序/vendor 代碼提供了更好的緩存。
   // webpack 4 不支援 webpack.optimize.CommonsChunkPlugin，改用 optimization
   optimization: {
-    minimizer: [new TerserPlugin()],
+    minimizer: [new TerserPlugin({ sourceMap: true })],
     runtimeChunk: {
       name: "manifest"
     },
@@ -30,46 +31,43 @@ module.exports = merge(base, {
       }
     }
   },
+  plugins:[
+    // 此插件在輸出目錄中
+    // 生成 `vue-ssr-client-manifest.json`。
+    new VueSSRClientPlugin()
+  ],
   resolve: {
     alias: {
-      'vue': 'vue/dist/vue.js'
+      'vue': isProduction ? 'vue/dist/vue.min.js' : 'vue/dist/vue.js'
     },
     extensions: ['*', '.js', '.vue', '.json']
-  },
-  devServer: {
-    historyApiFallback: true,
-    noInfo: true,
-    overlay: true
   },
   performance: {
     hints: false
   },
-  devtool: '#eval-source-map',
 })
 
-if (isProduction) {
-  module.exports.devtool = '#source-map'
-  // http://vue-loader.vuejs.org/en/workflow/production.html
-  module.exports.plugins = (module.exports.plugins || []).concat([
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"production"'
-      }
-    }),
-    /*
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
-      compress: {
-        warnings: false
-      }
-    }),
-    */
-    new webpack.LoaderOptionsPlugin({
-      minimize: true
-    }),
-
-    // 此插件在輸出目錄中
-    // 生成 `vue-ssr-client-manifest.json`。
-    new VueSSRClientPlugin()
-  ])
+if (!isProduction) {
+  config = merge(config, {
+    output: {
+      filename: '[name].js',
+      publicPath: 'http://localhost:9999/dist/',
+    },
+    plugins: [new webpack.HotModuleReplacementPlugin()],
+    devtool: 'source-map',
+    devServer: {
+      writeToDisk: true,
+      contentBase: path.resolve(__dirname, '../dist'),
+      publicPath: 'http://localhost:9999/dist/',
+      hot: true,
+      inline: true,
+      // historyApiFallback: true,
+      port: 9999,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+      },
+    },
+  })
 }
+
+module.exports = config

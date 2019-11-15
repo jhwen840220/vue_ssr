@@ -1,10 +1,9 @@
-var webpack = require('webpack')
 const nodeExternals = require('webpack-node-externals')
 const merge = require('webpack-merge')
 const base = require('./webpack.base.config')
 const VueSSRServerPlugin = require('vue-server-renderer/server-plugin')
+
 var webpackConfig = merge(base, {
-  mode: 'production',
   // 將 entry 指向應用程序的 server entry 文件
   entry: {
     app: './src/entry-server.js'
@@ -31,9 +30,6 @@ var webpackConfig = merge(base, {
   }),
   // externals: Object.keys(require('../package.json').dependencies),
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': 'production'
-    }),
 
     // 這是將服務器的整個輸出
     // 構建為單個 JSON 文件的插件。
