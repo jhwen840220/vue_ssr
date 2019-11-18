@@ -42,7 +42,7 @@
     "dev-client": "webpack-dev-server --config config/webpack.client.config.js",
     "dev-server": "webpack -w --config config/webpack.server.config.js",
     "dev": "run-p dev-client dev-server nodemon",
-    "nodemon": "export NODE_ENV=development && nodemon server.js",
+    "nodemon": "cross-env NODE_ENV=development nodemon server.js",
     "clean": "rimraf ./dist/",
     "build": "run-s clean build-all",
     "build-all": "run-p build-client build-server",
