@@ -76,7 +76,9 @@ var render = function() {
       _vm._v(" "),
       _c("br"),
       _vm._v(" "),
-      _c("router-link", { attrs: { to: "/page2" } }, [_vm._v("page2")]),
+      _c("router-link", { attrs: { to: "/page2" } }, [
+        _vm._v("server & client")
+      ]),
       _vm._v(" "),
       _c("router-view")
     ],

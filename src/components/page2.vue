@@ -1,12 +1,14 @@
 <template>
   <div id="page2">
-    <p>server: {{time}}</p>
+    <p>server: {{serverTime}}</p>
+    <p>client: {{clientTime}}</p>
   </div>
 </template>
 <script>
 export default {
   data(){
-    return{
+    return {
+      clientTime: ''
     }
   },
   asyncData({ store, route }) {
@@ -14,12 +16,13 @@ export default {
     return store.dispatch('fetchTime')
   },
   mounted() {
+    this.clientTime = new Date()
   },
   computed: {
-    time() { 
+    serverTime() { 
       return this.$store.state.time 
-      },
-  }
+    },
+  },
 }
 
 </script>

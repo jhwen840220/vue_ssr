@@ -2,7 +2,7 @@
   <div id="app">
     <div>APP</div>
     <router-link to="/">首頁</router-link> <br>
-    <router-link to="/page2">page2</router-link>
+    <router-link to="/page2">server & client</router-link>
     <router-view></router-view>
   </div>
   

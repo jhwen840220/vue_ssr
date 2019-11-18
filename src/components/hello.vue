@@ -1,6 +1,6 @@
 <template>
     <div id="testComponent">
-        I'm a {{name}}.
+        I'm {{name}}.
     </div>
 
 </template>
@@ -8,7 +8,7 @@
     export default {
         data(){
             return{
-                name:"component"
+                name:"homepage"
             }
         }
     }
